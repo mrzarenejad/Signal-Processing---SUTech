@@ -1,0 +1,17 @@
+clear all; clc;
+fs=100e3;
+ts=1/fs;
+T1=10e-3;
+T2=5e-3;
+t1=-T1:1/fs:T1;
+y1=stp(t1,-T2)-stp(t1,T2+ts);
+figure(1);
+subplot(3,1,1);
+plot(t1,y1);
+y2=y1;
+subplot(3,1,2);
+plot(t1,y2);
+y3=conv(y1,y2)*ts;
+t2=-(T1+T1):1/fs:T1+T1;
+subplot(3,1,3);
+plot(t2,y3);

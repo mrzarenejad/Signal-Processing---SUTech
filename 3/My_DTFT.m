@@ -1,0 +1,17 @@
+clear all; clc; close all;
+N=200;
+n=0:N-1;
+w0=pi/4;
+x1=cos(w0*n);
+w=-pi:0.001:pi;
+nt=n';
+Adtft=exp(-1i*nt*w);
+Xf1=x1*Adtft;
+Xf1a=abs(Xf1);
+figure(1);
+plot(w/pi,Xf1a);
+x2=stp(n,50)-stp(n,151);
+Xf2=x2*Adtft;
+Xf2a=abs(Xf2);
+figure(2);
+plot(w/pi,Xf2a);

@@ -1,0 +1,23 @@
+clear all; clc; close all;
+fs=50e3;
+ts=1/fs;
+N=200;
+n=0:N-1;
+t=n*ts;
+f1=10e3;
+f2=11e3;
+x1=10*cos(2*pi*f1*t)+cos(2*pi*f2*t);
+figure(1);
+plot(t,x1)
+Nfft=2^nextpow2(N);
+x1f=fft(x1,Nfft);
+x1f=fftshift(abs(x1f));
+f=(-Nfft/2:Nfft/2-1)*fs/Nfft;
+figure(2);
+plot(f,x1f)
+x2=x1.*hamming(N)';
+figure(3);
+plot(t,x2);
+x2f=fftshift(abs(fft(x2,Nfft)));
+figure(4);
+plot(f,x2f)
